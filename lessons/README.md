@@ -1,0 +1,40 @@
+(C)2023 Yevhenii Babich, contact information: [uuzh68@gmail.com](mailto:uuzh68@gmail.com)
+
+# Go lessons
+
+## Content
+
+* About GO
+    * [Intro](part_01.md#intro)
+    * [History](part_01.md#history)
+    * [Starting with GO tips](part_01.md#starting-with-go)
+        * [Novices](part_01.md#novices)
+        * [For skilled (`C`-related) developers](part_01.md#skilled-c--c-c-etc--developer)
+* [Install GO](part_02.md#starting-with-go-intallation)
+    * [Common way](part_02.md#common-way)
+    * [MacOS/Homebrew](part_02.md#install-go-with-homebrew-on-a-macos)
+    * [Linux](part_02.md#linux)
+    * [Windows](part_02.md#windows)
+* [GO Basics](part_03_basics.md#go-basic-syntax-training)
+    * [Keywords](part_03_basics.md#keywords)
+    * [Identifiers](part_03_basics.md#identifiers)
+    * [Literals](part_03_basics.md#literals)
+    * [Operators](part_03_basics.md#operators)
+    * [Variables](part_03_basics.md#variables)
+    * [Data types](part_03_basics.md#data-types)
+        * [Type aliases](part_03_basics.md#type-definitions-and-type-aliases)
+    * [Constants](part_03_basics.md#constants)
+    * [Syntax](part_03_basics.md#language-syntax)
+    * [Comments](part_03_basics.md#code-comments)
+    * [Statements](part_03_basics.md#statements)
+    * [Packages](part_03_basics.md#packages)
+* GO Explained
+  * [Functions](part_04_functions.md)
+    * [Defining functions](part_04_functions.md#defining-functions)
+    * [Variadic functions](part_04_functions.md#variadic-functions)
+    * [Anonymous functions](part_04_functions.md#anonymous-functions)
+    * [Closures](part_04_functions.md#closures)
+    * [Recursion](part_04_functions.md#recursion)
+    * [Return Values](part_04_functions.md#return-values)
+    * [Function Arguments](part_04_functions.md#function-arguments)
+    * [Error handling](part_04_functions.md#error-handling)
