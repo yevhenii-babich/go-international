@@ -1,0 +1,40 @@
+(C)2023 Євгеній Бабіч, контактна інформація: [ uuzh68@gmail.com ](mailto:uuzh68@gmail.com)
+
+#  Уроки мови GO
+
+##  Вміст
+
+* Про GO
+    * [ Вступ ](part_01.md#intro)
+    * [ Історія ](part_01.md#history)
+    * [ Як почати розробку на GO ](part_01.md#starting-with-go)
+        * [ Для початківців ](part_01.md#novices)
+        * [ Для кваліфікованих розробників (як перейти з С-подібних мов)](part_01.md#skilled-c--cc-etc--developer)
+* [ Установка GO ](part_02.md#starting-with-go-intallation)
+    * [ Загальний шлях ](part_02.md#common-way)
+    * [ MacOS/Homebrew ](part_02.md#install-go-with-homebrew-on-a-macos)
+    * [ Linux ](part_02.md#linux)
+    * [ Windows ](part_02.md#windows)
+* [ Основи GO ](part_03_basics.md#go-basic-syntax-training)
+    * [ Ключові слова ](part_03_basics.md#keywords)
+    * [ Ідентифікатори ](part_03_basics.md#identifiers)
+    * [ Літерали ](part_03_basics.md#literals)
+    * [ Оператори ](part_03_basics.md#operators)
+    * [ Змінні ](part_03_basics.md#variables)
+    * [ Типи даних ](part_03_basics.md#data-types)
+        * [ Псевдоніми типів ](part_03_basics.md#type-definitions-and-type-aliases)
+    * [ Константи ](part_03_basics.md#constants)
+    * [ Синтаксис ](part_03_basics.md#language-syntax)
+    * [ Коментарі ](part_03_basics.md#code-comments)
+    * [ Statements ](part_03_basics.md#statements)
+    * [ Пакети ](part_03_basics.md#packages)
+* Розширено про GO
+    * [ Функції ](part_04_functions.md)
+        * [ Визначення функцій ](part_04_functions.md#defining-functions)
+        * [ Варіадичні функції ](part_04_functions.md#variadic-functions)
+        * [ Анонімні функції ](part_04_functions.md#anonymous-functions)
+            * [ Closure ](part_04_functions.md#closures)
+        * [ Рекурсія ](part_04_functions.md#recursion)
+        * [ Повернуті значення ](part_04_functions.md#return-values)
+        * [ Аргументи функції ](part_04_functions.md#function-arguments)
+        * [ Обробка помилок ](part_04_functions.md#error-handling)

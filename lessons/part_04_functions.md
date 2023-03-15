@@ -195,8 +195,185 @@ arguments as closures.
 
 ## Recursion
 
+Recursion is a powerful concept in computer programming that involves a function calling itself. In Go, recursion can be
+used to solve problems that have a recursive structure, such as searching through a tree or computing factorials.
+
+To illustrate recursion in Go, let's consider the following function that computes the factorial of a given integer:
+
+```
+func factorial(n int) int {
+    if n == 0 {
+        return 1
+    }
+    return n * factorial(n-1)
+}
+```
+
+This function computes the factorial of `n` by recursively calling itself with the argument `n-1`, until `n` reaches 0.
+At this point, the function returns 1, which is the base case for the recursion.
+
+It's important to note that recursion can be computationally expensive, especially for large inputs, since it involves
+many function calls and memory usage. Therefore, it's often a good practice to optimize recursive algorithms by using
+memoization or tail recursion.
+
+Memoization involves storing the results of previous function calls in memory, which can greatly reduce the number of
+recursive calls needed. Tail recursion, on the other hand, involves optimizing the recursion so that the function calls
+itself as the last operation, which allows the compiler to optimize it into a loop.
+
+Overall, recursion is a powerful tool for solving complex problems, but it should be used judiciously and with care for
+its potential performance impact.
+
 ## Return Values
+
+n Go, a function can return one or more values. This is useful when a function needs to return multiple pieces of data.
+To return a value from a function, use the return statement followed by the value or values that you want to return.
+
+Here is an example of a function that returns a single value:
+
+```
+func add(a, b int) int {
+    return a + b
+}
+```
+
+This function takes two integer arguments and returns their sum.
+
+To return multiple values, separate them with commas:
+
+```
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("cannot divide by zero")
+    }
+    return a / b, nil
+}
+```
+
+In this example, the function takes two float64 arguments and returns their quotient as well as an error value if the
+second argument is 0.
+
+You can also name the return values in the function signature, like so:
+
+```
+func divide(a, b float64) (result float64, err error) {
+    if b == 0 {
+        err = fmt.Errorf("cannot divide by zero")
+        return
+    }
+    result = a / b
+    return
+}
+```
+
+In this case, the return values are named `result` and `err`. This can make the code more readable and self-documenting.
+
+Once you have called a function that returns a value, you can assign the returned value to a variable, like so:
+
+```
+sum := add(2, 3)
+quotient, err := divide(10, 2)
+```
+
+In this example, `sum` is assigned the value 5, and `quotient` is assigned the value 5, along with a `nil` error value.
+
+That's a basic overview of returning values from functions in Go. It's a powerful feature that can make your code more
+expressive and flexible.
 
 ## Function Arguments
 
+In Go, we can pass arguments to functions just like in any other programming language. When defining a function, we
+specify its parameter list, which describes the types and names of the arguments the function expects to receive. Here's
+an example:
+
+```
+func add(x, y int) int {
+    return x + y
+}
+```
+
+In this example, we define a function `add` that takes two int arguments, `x` and `y`, and returns their sum.
+
+We can call this function by passing in two `int` values:
+
+```
+sum := add(3, 4)
+fmt.Println(sum) // Output: 7
+```
+
+We can also pass in variables of the expected types:
+
+```
+a := 5
+b := 7
+sum := add(a, b)
+fmt.Println(sum) // Output: 12
+```
+
+In addition to specifying the types of the function parameters, we can also specify their names. Named parameters are
+useful because they make the code more readable and self-documenting. Here's an example:
+
+```
+func greet(name string, age int) {
+    fmt.Printf("Hello, %s! You are %d years old.\n", name, age)
+}
+```
+
+In this example, we define a function `greet` that takes two parameters: `name` of type `string` and `age` of
+type `int`. Inside the function body, we use the %s and %d format verbs to print the name and age values.
+
+We can call this function with named arguments:
+
+```
+greet(name: "John", age: 30) // Output: Hello, John! You are 30 years old.
+```
+
+Named arguments are particularly useful when calling functions with many arguments, as they help make the code more
+readable and maintainable.
+
+It's worth noting that Go functions do not support default parameter values or method overloading, unlike some other
+programming languages.
+
 ## Error handling
+
+In Go, errors are used to signal that something has gone wrong during the execution of a program. Go's error handling is
+based on the idea of returning an error value from a function call.
+
+To handle errors in Go, you can use the error type, which is a built-in interface in Go. Functions can return an error
+value as a second return value, which can then be checked by the caller.
+
+Here's an example of a function that returns an error:
+
+```
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("division by zero")
+    }
+    return a / b, nil
+}
+```
+
+In this example, if the second argument b is zero, the function returns an error value with a string message indicating
+that division by zero occurred. If the division is successful, the function returns the result and a nil error value.
+
+You can also use the `panic` and `recover` functions to handle exceptional situations, but this is generally discouraged
+in Go. Instead, you should use error handling to gracefully handle expected errors.
+
+Here's an example of using `panic` and `recover`:
+
+```
+func divide(a, b float64) float64 {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println("Recovered in divide:", r)
+        }
+    }()
+    if b == 0 {
+        panic("division by zero")
+    }
+    return a / b
+}
+```
+
+In this example, the `divide` function uses `panic` to signal an exceptional situation, and `recover` to recover from
+it. However, this is not a recommended approach for error handling in Go, as it can lead to difficult-to-debug code.
+It's generally better to use error values and handle them gracefully.
