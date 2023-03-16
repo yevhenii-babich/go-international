@@ -377,3 +377,76 @@ func divide(a, b float64) float64 {
 In this example, the `divide` function uses `panic` to signal an exceptional situation, and `recover` to recover from
 it. However, this is not a recommended approach for error handling in Go, as it can lead to difficult-to-debug code.
 It's generally better to use error values and handle them gracefully.
+
+## Defer
+
+Defer is a keyword in Go that allows you to delay the execution of a statement until the surrounding function returns.
+This can be useful for a variety of reasons, such as closing a file or releasing a lock after a function has finished
+executing.
+
+To use defer, you simply place the keyword followed by the statement you want to defer at the beginning of the function.
+For example, let's say we want to close a file after reading from it:
+
+```go
+package main
+
+import "os"
+
+func readFile(filename string) error {
+	file, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	// code to read from file
+	return nil
+}
+```
+
+In this example, we use defer to ensure that file.Close() is called before the function returns, regardless of whether
+an error occurs or not. If an error does occur, it is returned immediately, skipping over the defer statement.
+
+Defer statements are executed in LIFO (last in, first out) order, so if you have multiple defer statements in a
+function, they will be executed in reverse order. This can be useful if you need to ensure that certain statements are
+executed before others, even if they are not adjacent in the code.
+
+It's important to note that defer does not catch exceptions in Go. If a panic occurs during the execution of a deferred
+statement, it will still propagate up the call stack as usual. Instead, defer is primarily used for cleanup tasks that
+should always be executed, regardless of whether an error occurs or not.
+
+## Recover from panic
+
+In Go, when a panic occurs, the program will terminate unless it is recovered. To recover from a panic, you can use the
+built-in `recover` function.
+
+The recover function is used to catch a panic and resume normal execution of the program. It returns the value passed
+to `panic`, or `nil` if there was no panic.
+
+Here is an example of how to use recover to handle a panic:
+
+```
+func recoverFromPanic() {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println("Recovered from panic:", r)
+        }
+    }()
+
+    fmt.Println("Before panic")
+    panic("Oops!")
+    fmt.Println("After panic")
+}
+```
+
+In this example, the `defer` statement is used to call a function that will recover from any panics that occur within
+the current function or its descendants. The `recover` function is called within a defer statement, so it will execute
+after the panic occurs. The `if r := recover(); r != nil` statement checks if a panic occurred and if so, prints a
+message with the value passed to `panic`.
+
+It's important to note that `recover` should only be used to handle panics that you expect and know how to handle. If
+you are not sure how to handle a panic, it's better to let it propagate and terminate the program, so you can debug and
+fix the root cause of the panic.
+
+> Certainly! It's important to note that panics can also be initiated by 3rd party packages, and it's important to
+> handle them appropriately in your own code. This can involve using a combination of error checking and panic recovery to
+> ensure that your program can handle unexpected conditions gracefully.

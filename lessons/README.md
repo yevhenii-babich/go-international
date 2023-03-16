@@ -38,3 +38,4 @@
     * [Return Values](part_04_functions.md#return-values)
     * [Function Arguments](part_04_functions.md#function-arguments)
     * [Error handling](part_04_functions.md#error-handling)
+    * [Defer](part_04_functions.md#defer)
